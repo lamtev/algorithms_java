@@ -32,7 +32,7 @@ public class VerificationOfTheSimplicity {
     private boolean isPrime(long number) {
         if (number <= 1)
             return false;
-        for (int i = 2; i*i < number; ++i)
+        for (int i = 2; i*i <= number; ++i)
             if (number % i == 0)
                 return false;
         return true;
@@ -59,18 +59,6 @@ public class VerificationOfTheSimplicity {
 
         int nextInt() {
             return Integer.parseInt(next());
-        }
-
-        long nextLong() {
-            return Long.parseLong(next());
-        }
-
-        byte nextByte() {
-            return Byte.parseByte(next());
-        }
-
-        short nextShort() {
-            return Short.parseShort(next());
         }
 
     }

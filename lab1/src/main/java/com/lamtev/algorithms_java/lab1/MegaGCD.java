@@ -3,20 +3,21 @@ package com.lamtev.algorithms_java.lab1;
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class APlusB {
+public class MegaGCD {
 
     private FastScanner in;
     private PrintWriter out;
+    private int[] numberDividers;
+    private int[] commonDividers;
 
     public static void main(String[] args) {
-        new APlusB().run();
+        new MegaGCD().run();
     }
 
     public void run() {
         try {
             in = new FastScanner();
             out = new PrintWriter(System.out);
-
             solve();
 
             out.close();
@@ -26,15 +27,9 @@ public class APlusB {
     }
 
     private void solve() throws IOException {
-        //tests crash when i use byte and short
-        int numberOfTests = in.nextInt();
-        int a = 0;
-        for (int i = 0; i < numberOfTests << 1; ++i) {
-            if (i % 2 == 0) {
-                a = in.nextInt();
-            } else {
-                out.println(a + in.nextInt());
-            }
+        while (in.hasNext()) {
+            int number = in.nextInt();
+
         }
     }
 
@@ -55,6 +50,10 @@ public class APlusB {
                 }
             }
             return st.nextToken();
+        }
+
+        boolean hasNext() {
+            return st == null || !st.hasMoreTokens();
         }
 
         int nextInt() {
