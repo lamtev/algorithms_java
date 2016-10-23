@@ -34,7 +34,7 @@ public class MegaGCD {
     }
 
     private int gcd(int first, int second) {
-        while (first !=0 && second != 0) {
+        while (first != 0 && second != 0) {
             if (first >= second) {
                 first %= second;
             } else {
