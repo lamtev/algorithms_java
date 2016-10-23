@@ -3,13 +3,13 @@ package com.lamtev.algorithms_java.lab1;
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class Revision {
+public class Columns {
 
     private FastScanner in;
     private PrintWriter out;
 
     public static void main(String[] args) {
-        new Revision().run();
+        new Columns().run();
     }
 
     public void run() {
@@ -26,19 +26,25 @@ public class Revision {
     }
 
     private void solve() throws IOException {
+        int x = in.nextInt();
         int n = in.nextInt();
-        int smallest = Integer.MAX_VALUE;
-        int almostSmallest = Integer.MAX_VALUE;
+        int[][] arr = new int[n][n];
         for (int i = 0; i < n; ++i) {
-            int current = in.nextInt();
-            if (current < smallest) {
-                almostSmallest = smallest;
-                smallest = current;
-            } else if (current < almostSmallest) {
-                almostSmallest = current;
+            for (int j = 0; j < n; ++j) {
+                arr[i][j] = in.nextInt();
             }
         }
-        out.println(smallest + " " + almostSmallest);
+        for (int i = 0; i < n; ++i) {
+            boolean hasX = false;
+            for (int j = 0; j < n; ++j) {
+                if (arr[j][i] == x) {
+                    out.println("YES");
+                    hasX = true;
+                    break;
+                }
+            }
+            if (!hasX) out.println("NO");
+        }
     }
 
     private class FastScanner {
