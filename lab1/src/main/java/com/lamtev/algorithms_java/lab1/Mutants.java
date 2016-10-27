@@ -70,7 +70,7 @@ public class Mutants {
 
         CutMap() {
             keys = new int[100000];
-            values = new int[10000];
+            values = new int[100000];
             size = 0;
         }
 
