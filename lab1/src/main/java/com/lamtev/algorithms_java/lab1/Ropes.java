@@ -27,22 +27,42 @@ public class Ropes {
 
     private void solve() throws IOException {
         int numberOfRopes = in.nextInt();
-        int numberOfHouses = in.nextInt();
-        int[] ropesLengths = new int[numberOfRopes];
-        int min = Integer.MAX_VALUE;
+        int expectedNumberOfHouses = in.nextInt();
+        int[] ropesLengths = new int[10001];
+        int max = Integer.MIN_VALUE;
         int sum = 0;
+        boolean willClose = true;
         for (int i = 0; i < numberOfRopes; ++i) {
             ropesLengths[i] = in.nextInt();
-            if (ropesLengths[i] < min) {
-                min = ropesLengths[i];
+            if (ropesLengths[i] > max) {
+                max = ropesLengths[i];
             }
-            sum += ropesLengths[i];
+            if (willClose) {
+                sum += ropesLengths[i];
+                if (sum >= expectedNumberOfHouses) {
+                    willClose = false;
+                }
+            }
         }
-        if (sum < numberOfHouses) {
+        if (willClose) {
             out.println(0);
             return;
         }
-
+        int left = 0;
+        int right = max;
+        while (left < right-1) {
+            int mid = (left + right) / 2;
+            int actualNumberOfHouses = 0;
+            for (int ropeLength : ropesLengths) {
+                actualNumberOfHouses += ropeLength/mid;
+            }
+            if (actualNumberOfHouses < expectedNumberOfHouses) {
+                right = mid;
+            } else {
+                left = mid;
+            }
+        }
+        out.println(left);
     }
 
     private class FastScanner {
@@ -69,6 +89,5 @@ public class Ropes {
         }
 
     }
-
 
 }
