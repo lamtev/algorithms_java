@@ -29,16 +29,12 @@ public class Ropes {
         int numberOfRopes = in.nextInt();
         int expectedNumberOfHouses = in.nextInt();
         int[] ropesLengths = new int[10001];
-        int max = Integer.MIN_VALUE;
-        int sum = 0;
+        long sum = 0;
         boolean willClose = true;
         for (int i = 0; i < numberOfRopes; ++i) {
             ropesLengths[i] = in.nextInt();
-            if (ropesLengths[i] > max) {
-                max = ropesLengths[i];
-            }
+            sum += ropesLengths[i];
             if (willClose) {
-                sum += ropesLengths[i];
                 if (sum >= expectedNumberOfHouses) {
                     willClose = false;
                 }
@@ -48,10 +44,11 @@ public class Ropes {
             out.println(0);
             return;
         }
-        int left = 0;
-        int right = max;
-        while (left < right-1) {
-            int mid = (left + right) / 2;
+
+        long left = 1;
+        long right = sum / expectedNumberOfHouses + 1;
+        while (left < right - 1) {
+            long mid = (left + right) / 2;
             int actualNumberOfHouses = 0;
             for (int ropeLength : ropesLengths) {
                 actualNumberOfHouses += ropeLength/mid;

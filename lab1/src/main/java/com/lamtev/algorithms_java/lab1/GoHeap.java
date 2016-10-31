@@ -3,13 +3,13 @@ package com.lamtev.algorithms_java.lab1;
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class IsHeap {
+public class GoHeap {
 
     private FastScanner in;
     private PrintWriter out;
 
     public static void main(String[] args) {
-        new IsHeap().run();
+        new GoHeap().run();
     }
 
     public void run() {
@@ -26,23 +26,23 @@ public class IsHeap {
     }
 
     private void solve() throws IOException {
-        int n = in.nextInt();
-        long[] array = new long[n];
-        for (int i = 0; i < n; ++i) {
-            array[i] = in.nextLong();
-        }
-        out.println(isHeap(array) ? "YES" : "NO");
 
     }
 
-    private boolean isHeap(long[] array) {
-        int n = array.length;
-        for (int i = 0; i < n; ++i) {
-            if (!((!(2*i+1 < n)|| array[i] <= array[2*i+1]) && (!(2*i+2 < n) || array[i] <= array[2*i+2]))) {
-                return false;
-            }
+    private class Heap {
+
+        private int size = 0;
+        private static final int DEFAULT_CAPACITY = 10;
+        private int[] heap = new int[DEFAULT_CAPACITY];
+
+        public void insert(int element) {
+
         }
-        return true;
+
+        public int extract() {
+            return 0;
+        }
+
     }
 
     private class FastScanner {
@@ -66,10 +66,6 @@ public class IsHeap {
 
         int nextInt() {
             return Integer.parseInt(next());
-        }
-
-        long nextLong() {
-            return Long.parseLong(next());
         }
 
     }
