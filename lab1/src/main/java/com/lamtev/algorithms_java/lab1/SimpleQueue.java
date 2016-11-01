@@ -31,7 +31,7 @@ public class SimpleQueue {
             while (true) {
                 String command = in.nextLine();
                 switch (command) {
-                    case "pop":
+                    case "extract":
                         out.println(queue.pop());
                         break;
                     case "front":
