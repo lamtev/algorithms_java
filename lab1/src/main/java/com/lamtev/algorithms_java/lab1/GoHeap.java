@@ -82,7 +82,7 @@ public class GoHeap {
                 if (heap[i] < heap[(i << 1)]) {
                     if (heap[i] >= heap[(i << 1) + 1]) {
                         swap(i, i << 1);
-                        i *= 2;
+                        i <<= 1;
                     } else {
                         int max;
                         if (heap[(i << 1)] <= heap[(i << 1) + 1]) {
@@ -103,9 +103,9 @@ public class GoHeap {
         }
 
         private void swap(int i, int j) {
-            heap[i] = heap[i] ^ heap[j];
+            heap[i] ^= heap[j];
             heap[j] = heap[i] ^ heap[j];
-            heap[i] = heap[i] ^ heap[j];
+            heap[i] ^= heap[j];
         }
 
         private void growUp() {
