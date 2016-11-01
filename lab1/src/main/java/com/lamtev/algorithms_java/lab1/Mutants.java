@@ -84,27 +84,27 @@ public class Mutants {
         }
 
         int get(int key) {
-            int index = binarySearch(keys, key);
+            int index = binarySearch(key);
             if (index != -1) {
                 return values[index];
             }
             return 0;
         }
 
-        private int binarySearch(int[] a, int key) {
-            int index = binarySearchForInsertionIndex(a, key);
-            if (a[index] == key) {
+        private int binarySearch(int key) {
+            int index = binarySearchForInsertionIndex(key);
+            if (keys[index] == key) {
                 return index;
             }
             return -1;
         }
 
-        private int binarySearchForInsertionIndex(int[] a, int key) {
+        private int binarySearchForInsertionIndex(int key) {
             int left = -1;
             int right = size;
             while (left < right - 1) {
                 int mid = (left + right) >> 1;
-                if (a[mid] < key) {
+                if (keys[mid] < key) {
                     left = mid;
                 } else {
                     right = mid;

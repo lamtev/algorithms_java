@@ -26,7 +26,7 @@ public class PostfixNotation {
     }
 
     private void solve() throws IOException {
-        String[] tokens = in.nextLine().split(" ");
+        String[] tokens = in.nextLine().split("\\s+");
         int size = 0;
         int[] stack = new int[100];
         int first;

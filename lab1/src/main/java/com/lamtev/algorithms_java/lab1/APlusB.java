@@ -26,15 +26,12 @@ public class APlusB {
     }
 
     private void solve() throws IOException {
-        //tests crash when i use byte and short
+        //tests crash when i want to optimize using byte and short :(
         int numberOfTests = in.nextInt();
-        int a = 0;
-        for (int i = 0; i < numberOfTests << 1; ++i) {
-            if (i % 2 == 0) {
-                a = in.nextInt();
-            } else {
-                out.println(a + in.nextInt());
-            }
+        int count = 0;
+        while (count < numberOfTests) {
+            out.println(in.nextInt() + in.nextInt());
+            ++count;
         }
     }
 
