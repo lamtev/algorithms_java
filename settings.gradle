@@ -1,4 +1,5 @@
 rootProject.name = 'algorithms_java'
 include 'data_structures'
 include 'lab1'
+include 'sortings'
 
