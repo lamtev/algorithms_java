@@ -1,0 +1,5 @@
+dependencies {
+    compile group: 'org.openjdk.jmh', name: 'jmh-core', version: '1.15'
+    compile group: 'org.openjdk.jmh', name: 'jmh-generator-annprocess', version: '1.15'
+    compile project(':algorithms')
+}

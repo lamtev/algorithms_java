@@ -1,0 +1,4 @@
+rootProject.name = 'sortings'
+include 'algorithms'
+include 'benchmarks'
+

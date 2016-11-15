@@ -1,0 +1,29 @@
+language: generic
+
+sudo: required
+
+dist: trusty
+
+services:
+  - docker
+  
+install:
+  - docker pull lamtev/latex:full
+  - docker pull lamtev/java:latest
+
+matrix:
+  include:
+    - env: PROJECT="sortings"
+
+script:
+  - docker run -v $TRAVIS_BUILD_DIR:/algorithms_java lamtev/java:latest /bin/bash -c " cd algorithms_java/${PROJECT} && gradle build "
+  #- if [ ${PROJECT} == "sortings" ]; then docker run -v $TRAVIS_BUILD_DIR:/algorithms_java lamtev/latex:full /bin/bash -c " cd algorithms_java/${PROJECT}/report && pdflatex ${PROJECT}_report.tex && pdflatex ${PROJECT}_report.tex " fi
+  
+deploy:
+  provider: releases
+  api_key: "$GITHUB_DEPLOY_TOKEN"
+  file: 
+    - ${TRAVIS_BUILD_DIR}/${PROJECT}/report.pdf
+  skip_cleanup: true
+  on:
+    tags: true
