@@ -33,7 +33,7 @@ public class HeapSort {
         for (int x : a) {
             heap.insert(x);
         }
-        for (int i = a.length - 1; i >=  0; --i) {
+        for (int i = a.length - 1; i >= 0; --i) {
             a[i] = heap.extract();
         }
     }

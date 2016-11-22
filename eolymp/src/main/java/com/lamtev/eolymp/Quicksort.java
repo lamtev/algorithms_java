@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 import java.util.Random;
 import java.util.Scanner;
 
-public class QuickSort {
+public class Quicksort {
 
     private static Random random = new Random(System.currentTimeMillis());
 
@@ -44,9 +44,9 @@ public class QuickSort {
         quicksort(a, pivot + 1, r);
     }
 
-    private static int partition(int[] a, int l, int r) {
-        int x = a[l + (r - l + 1) / 2];
-        int i = l;
+    private static int partition(int[] a, int p, int r) {
+        int x = a[p + (r - p + 1) / 2];
+        int i = p;
         int j = r;
         while (i <= j) {
             while (a[i] < x) i++;
