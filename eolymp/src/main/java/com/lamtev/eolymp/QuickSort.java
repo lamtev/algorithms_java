@@ -1,68 +1,59 @@
 package com.lamtev.eolymp;
 
-import java.io.IOException;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Random;
 import java.util.Scanner;
 
 public class QuickSort {
 
-    private Scanner in;
-    private PrintWriter out;
-    private static final Random random = new Random(System.currentTimeMillis());
+    private static Random random = new Random(System.currentTimeMillis());
 
     public static void main(String[] args) {
-        new QuickSort().run();
-    }
-
-    public void run() {
-        try {
-            in = new Scanner(System.in);
-            out = new PrintWriter(System.out);
-
-            solve();
-
+        try (Scanner in = new Scanner(new File("input.txt"))) {
+            PrintWriter out = new PrintWriter("output.txt");
+            String[] s = in.nextLine().split(" ");
+            int n = s.length;
+            int[] a = new int[n];
+            for (int i = 0; i < n; i++) {
+                a[i] = Integer.parseInt(s[i]);
+            }
+            sort(a);
+            for (int i : a) {
+                out.print(i + " ");
+            }
+            out.flush();
             out.close();
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private void solve() throws IOException {
-        String[] sArr = in.nextLine().split(" ");
-        int size = 0;
-        int[] a = new int[sArr.length];
-        for (String s : sArr) {
-            a[size++] = Integer.parseInt(s);
-        }
-        randomizedQuicksort(a, 0, size - 1);
-        println(a, 0, size - 1);
+    private static void sort(int[] a) {
+        shuffle(a);
+        quicksort(a, 0, a.length - 1);
     }
 
-    private static void randomizedQuicksort(int[] a, int p, int r) {
-        if (p < r) {
-            int q = randomizedPartition(a, p, r);
-            randomizedQuicksort(a, p, q - 1);
-            randomizedQuicksort(a, q + 1, r);
+    private static void quicksort(int[] a, int p, int r) {
+        if (p >= r) {
+            return;
         }
+        int pivot = partition(a, p, r);
+        quicksort(a, p, pivot);
+        quicksort(a, pivot + 1, r);
     }
 
-    private static int randomizedPartition(int[] a, int p, int r) {
-        int i = Math.abs(random.nextInt()) % (r - p + 1) + p;
-        swap(a, r, i);
-        return partition(a, p, r);
-    }
-
-    private static int partition(int[] a, int p, int r) {
-        int x = a[r];
-        int i = p - 1;
-        for (int j = p; j < r; ++j) {
-            if (a[j] <= x) {
-                swap(a, ++i, j);
-            }
+    private static int partition(int[] a, int l, int r) {
+        int x = a[l + (r - l + 1) / 2];
+        int i = l;
+        int j = r;
+        while (i <= j) {
+            while (a[i] < x) i++;
+            while (a[j] > x) j--;
+            if (i <= j) swap(a, i++, j--);
         }
-        swap(a, ++i, r);
-        return i;
+        return j;
     }
 
     private static void swap(int[] a, int i, int j) {
@@ -71,15 +62,10 @@ public class QuickSort {
         a[j] = t;
     }
 
-    private void println(int[] a, int p, int r) {
-        int n = a.length;
-        for (int i = p; i <= r; ++i) {
-            out.print(a[i]);
-            if (i != n - 1) {
-                out.print(" ");
-            }
+    private static void shuffle(int[] a) {
+        for (int i = 0; i < a.length; i++) {
+            swap(a, i, i + random.nextInt(a.length - i));
         }
-        out.println();
     }
 
 }
