@@ -1,6 +1,6 @@
 package com.lamtev.sortings.benchmarks;
 
-import com.lamtev.sortings.algorithms.BubbleSort;
+import com.lamtev.sortings.algorithms.InsertionSort;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.runner.Runner;
@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 @State(Scope.Thread)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
-public class BubbleSortBenchmark {
+public class InsertionSortBenchmark {
 
     private int[] a;
 
@@ -24,12 +24,12 @@ public class BubbleSortBenchmark {
 
     @Benchmark
     public void measureBubbleSort(Blackhole bh) {
-        bh.consume(BubbleSort.sort(a));
+        bh.consume(InsertionSort.sort(a));
     }
 
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder()
-                .include(BubbleSortBenchmark.class.getSimpleName())
+                .include(InsertionSortBenchmark.class.getSimpleName())
                 .warmupIterations(5)
                 .measurementIterations(5)
                 .forks(1)
