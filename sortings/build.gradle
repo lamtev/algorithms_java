@@ -1,12 +1,12 @@
 allprojects {
-	group 'com.lamtev'
-	version '1.0-SNAPSHOT'
+    group 'com.lamtev'
+    version '1.0-SNAPSHOT'
 
-	apply plugin: 'java'
+    apply plugin: 'java'
 
-	sourceCompatibility = 1.8
+    sourceCompatibility = 1.8
 
-	repositories {
-		jcenter()
-	}
+    repositories {
+        jcenter()
+    }
 }

@@ -1,6 +1,6 @@
 package com.lamtev.sortings.benchmarks;
 
-import com.lamtev.sortings.algorithms.InsertionSort;
+import com.lamtev.sortings.algorithms.ShiftInsertionSort;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.runner.Runner;
@@ -15,7 +15,7 @@ import static com.lamtev.sortings.algorithms.util.Utils.generateArray;
 @State(Scope.Thread)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
-public class InsertionSortBenchmark {
+public class ShiftInsertionSortBenchmark {
 
     private int[] array;
 
@@ -28,13 +28,13 @@ public class InsertionSortBenchmark {
     }
 
     @Benchmark
-    public void measureInsertionSort(Blackhole bh) {
-        bh.consume(InsertionSort.sort(array));
+    public void measureShiftInsertionSort(Blackhole bh) {
+        bh.consume(ShiftInsertionSort.sort(array));
     }
 
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder()
-                .include(InsertionSortBenchmark.class.getSimpleName())
+                .include(RandomThreeWayPartitionQuickSortBenchmark.class.getSimpleName())
                 .warmupIterations(5)
                 .measurementIterations(5)
                 .forks(1)

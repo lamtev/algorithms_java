@@ -42,7 +42,7 @@ public class ShiftInsertionSort {
             } else if (ikey - left > right - ikey) {
                 if (right >= length - 1) {
                     System.arraycopy(sortedArray, left, sortedArray, left - 1, ikey - left);
-                    sortedArray[ikey-1] = array[i];
+                    sortedArray[ikey - 1] = array[i];
                     --left;
                 } else {
                     System.arraycopy(sortedArray, ikey, sortedArray, ikey + 1, right - ikey + 1);

@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
+import static com.lamtev.sortings.algorithms.util.Utils.generateArray;
 import static org.junit.Assert.assertTrue;
 
 public class InsertionSortTest {
@@ -13,7 +14,7 @@ public class InsertionSortTest {
         int arrayLength = 100_000;
         int numberOfTests = 10;
         for (int i = 0; i < numberOfTests; ++i) {
-            int[] expectedArray = TestUtils.generateArray(arrayLength);
+            int[] expectedArray = generateArray(arrayLength);
             int[] actualArray = expectedArray.clone();
             Arrays.sort(expectedArray);
             InsertionSort.sort(actualArray);

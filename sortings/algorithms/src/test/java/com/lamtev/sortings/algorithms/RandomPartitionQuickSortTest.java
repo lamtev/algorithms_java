@@ -7,7 +7,7 @@ import java.util.Arrays;
 import static com.lamtev.sortings.algorithms.util.Utils.generateArray;
 import static org.junit.Assert.assertTrue;
 
-public class ShiftInsertionSortTest {
+public class RandomPartitionQuickSortTest {
 
     @Test
     public void testSort() {
@@ -17,7 +17,7 @@ public class ShiftInsertionSortTest {
             int[] expectedArray = generateArray(arrayLength);
             int[] actualArray = expectedArray.clone();
             Arrays.sort(expectedArray);
-            ShiftInsertionSort.sort(actualArray);
+            RandomPartitionQuickSort.sort(actualArray);
             assertTrue(Arrays.equals(expectedArray, actualArray));
         }
     }

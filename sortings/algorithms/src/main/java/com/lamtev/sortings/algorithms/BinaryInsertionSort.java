@@ -1,5 +1,7 @@
 package com.lamtev.sortings.algorithms;
 
+import static com.lamtev.sortings.algorithms.util.Utils.swap;
+
 public class BinaryInsertionSort {
 
     public static int[] sort(int[] array) {
@@ -10,12 +12,6 @@ public class BinaryInsertionSort {
             }
         }
         return array;
-    }
-
-    static void swap(int[] array, int i, int j) {
-        int t = array[i];
-        array[i] = array[j];
-        array[j] = t;
     }
 
     private static int binarySearchForInsertionIndex(int[] array, int key, int left, int right) {
