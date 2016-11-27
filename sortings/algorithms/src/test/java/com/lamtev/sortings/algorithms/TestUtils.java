@@ -8,7 +8,7 @@ class TestUtils {
         Random RANDOM = new Random(System.currentTimeMillis());
         int[] array = new int[n];
         for (int i = 0; i < n; ++i) {
-            array[i] = i + 1;
+            array[i] = i;
         }
         for (int i = 0; i < n; ++i) {
             BinaryInsertionSort.swap(array, i, Math.abs(RANDOM.nextInt()) % n);

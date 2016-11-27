@@ -10,12 +10,15 @@ public class InsertionSortTest {
 
     @Test
     public void testSort() {
-        int n = 100_000;
-        int[] expectedArray = TestUtils.generateArray(n);
-        int[] actualArray = expectedArray.clone();
-        Arrays.sort(expectedArray);
-        InsertionSort.sort(actualArray);
-        assertTrue(Arrays.equals(expectedArray, actualArray));
+        int arrayLength = 100_000;
+        int numberOfTests = 10;
+        for (int i = 0; i < numberOfTests; ++i) {
+            int[] expectedArray = TestUtils.generateArray(arrayLength);
+            int[] actualArray = expectedArray.clone();
+            Arrays.sort(expectedArray);
+            InsertionSort.sort(actualArray);
+            assertTrue(Arrays.equals(expectedArray, actualArray));
+        }
     }
 
 }
