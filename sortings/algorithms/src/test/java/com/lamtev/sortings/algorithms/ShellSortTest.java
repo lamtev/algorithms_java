@@ -7,7 +7,7 @@ import java.util.Arrays;
 import static com.lamtev.sortings.algorithms.util.Utils.generateArray;
 import static org.junit.Assert.assertTrue;
 
-public class MergeSortTest {
+public class ShellSortTest {
 
     @Test
     public void testSort() {
@@ -17,7 +17,7 @@ public class MergeSortTest {
             int[] expectedArray = generateArray(arrayLength);
             int[] actualArray = expectedArray.clone();
             Arrays.sort(expectedArray);
-            MergeSort.sort(actualArray);
+            ShellSort.sort(actualArray);
             assertTrue(Arrays.equals(expectedArray, actualArray));
         }
     }
