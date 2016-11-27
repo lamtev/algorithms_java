@@ -34,7 +34,7 @@ public class ShiftInsertionSortBenchmark {
 
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder()
-                .include(RandomThreeWayPartitionQuickSortBenchmark.class.getSimpleName())
+                .include(ShiftInsertionSortBenchmark.class.getSimpleName())
                 .warmupIterations(5)
                 .measurementIterations(5)
                 .forks(1)
